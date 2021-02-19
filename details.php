@@ -91,24 +91,19 @@ body {
       <button type="submit" name="submit">Search</button>
     </form>
   </div>
+  <p hidden>This paragraph should be hidden.</p>
+
 </div>
+
 <?php
 $idfErr="";
-    require_once dirname(__FILE__) . '/dbConnect.php';
-
-          if(isset($_POST["submit"])) { 
-        if (empty($_POST["search"])){
-           $idfErr="chercher quoi???";
-            }else{
-             $db = new DbConnect();
+require_once dirname(__FILE__) . '/dbConnect.php';
+    
+$db = new DbConnect();
               $con = $db->connect();
-              $kda = explode("||",$_POST["search"]);
-              echo $kda[0]; 
-
-             $stmt=$con->prepare("SELECT * FROM news WHERE news_name = ? ");
-             $stmt->bind_param("s",$kda[0]);
+             $stmt=$con->prepare("SELECT * FROM news");
              $stmt->execute();
-             $stmt->bind_result($id_news, $text_news,$id_cat,$news_name);
+             $stmt->bind_result($id_news, $text_news,$id_cat,$news_name,$news_image);
              $row = array();
               while($stmt->fetch()){
                      $news = array();
@@ -116,6 +111,37 @@ $idfErr="";
                     $news["text_news"] = $text_news;
                      $news["id_cat"] = $id_cat;
                     $news["news_name"] = $news_name;
+                    $news["news_image"] = $news_image;
+                  echo ' <div  id="contenue"
+                   style="padding-left:16px">
+                   <h2>'.$news_name.'</h2>
+                   <p>'.$text_news.' </p>
+                   </div>';
+              }
+          if(isset($_POST["submit"])) { 
+            echo '<style type="text/css">
+            #contenue {
+                 display: none;}
+             </style>';
+
+        if (empty($_POST["search"])){
+           $idfErr="chercher quoi???";
+            }else{
+             $db = new DbConnect();
+              $con = $db->connect();
+              $kda = explode("||",$_POST["search"]);
+             $stmt=$con->prepare("SELECT * FROM news WHERE news_name = ? ");
+             $stmt->bind_param("s",$kda[0]);
+             $stmt->execute();
+             $stmt->bind_result($id_news, $text_news,$id_cat,$news_name,$news_image);
+             $row = array();
+              while($stmt->fetch()){
+                     $news = array();
+                     $news["id_news"] = $id_news;
+                    $news["text_news"] = $text_news;
+                     $news["id_cat"] = $id_cat;
+                    $news["news_name"] = $news_name;
+                    $news["news_image"] = $news_image;                    
                   echo ' <div style="padding-left:16px">
                    <h2>'.$news_name.'</h2>
                    <p>'.$text_news.' </p>

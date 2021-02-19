@@ -1,34 +1,38 @@
 <?php
         require_once dirname(__FILE__) . '/dbConnect.php';
-
-          if(isset($_POST["submit"])) { 
-        if (empty($_POST["search"])){
-           $idfErr="chercher quoi???";
-            }else{
+        
         $db = new DbConnect();
-              $this->con = $db->connect();
-              $stmt = $this->con->prepare("SELECT *
-                FROM news
-                WHERE news_name = ? ");
-             $stmt->bind_param("s", $);
-             $stmt->execute();
-             $stmt->bind_result($id_news, $text_news,$id_cat);
-             $row = array();
-              while($stmt->fetch()){
-                     $news = array();
-                     $news["id_news"] = $id_news;
-                    $news["text_news"] = $text_news;
-                     $news["id_cat"] = $id_cat;
-
-         array_push($row, $news);
-        }      
-          $response->getBody()->write(json_encode($responseData));
-}
- if ($idfErr != "") {
-echo '<div class="error"><strong>Erreur: </strong> ' . $idfErr . '</div>';
-    }else
-    {
-        echo($response);
-    }
+        $con = $db->connect();
+        if(isset($_POST["submit"])) { 
+          if (empty($_POST["username"]) or empty($_POST["password"])){
+              $idfErr="Champ(s) vide(s)!";
+          }else{
+                      $stmt = $con->prepare('SELECT * FROM user WHERE Nom_user = ?');
+                            $stmt->bind_param('s', $_POST['username']);
+                             if ($stmt->execute()){
+                  $stmt->bind_result($Username, $Password);
+                  while($stmt->fetch()){
+                  $user = array();
+                  $user["Username"] = $Username;
+                  $user["Password"] = $Password;
+                  }
+                if ($Password == $_POST['password']) {
+                  // Verification success! User has loggedin!
+                  // Create sessions so we know the user is logged in, they basically act like cookies but remember the data on the server.
+                  session_regenerate_id();
+                  $_SESSION['loggedin'] = TRUE;
+                  $_SESSION['name'] = $_POST['username'];
+                header('Location: index.php'); 
+                          exit;
+          
+                      } else {
+                  $idfErr="Identifiants incorrects!"; 
+              }
+                                $stmt->close();
+          }else {
+               $idfErr="Identifiants incorrects"; 
+          }
+          }
+          }
 
 ?>
