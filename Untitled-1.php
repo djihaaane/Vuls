@@ -19,22 +19,39 @@
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
     </div>
-
-    <div class="row">
-        <div class="column">
-            <img src="./images/wal1.jpg">
-            <img src="./images/wal2.jpg">
-            <img src="./images/wal5.jpg">
-
-
-        </div>
-        <div class="column">
-            <img src="./images/wal3.jpg">
-            <img src="./images/wal4.jpg">
-            <img src="./images/wal6.jpg">
-
-        </div>
-
+    <div class="landing" id="home">
+        <p class="hello"> HACKING NASA </p>
+        <p class="m">
+        <br> Loading 20%
+        <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading 40%
+        <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading 60%
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading 80%</p>
+        <p class="s"> HACKED SUCCESSFLY </p>
+    </div> 
+    <p class="mm">Les nouveautés</p>
+    <div class="row" id="news">
+            <table style="width:auto;">
+                   <tr>
+                   <td>
+                    <img width="350dp"  src="./images/covid.jpg">
+                    <button style="width: auto;" class="btn" >Plus</button>
+                   </td>
+                   <td>
+                    <img width="350dp" src="./images/cybersecurite.jpg">
+                    <button style="width: auto;" class="btn" >Plus</button>
+                   </td>
+                   <td>
+                    <img width="350dp" src="./images/mgwp.jpg">
+                    <button style="width: auto;" class="btn" >Plus</button>
+                   </td>
+                   </tr>
+                   <tr>
+                   <td>
+                    <img  width="350dp"  src="./images/sport.jpg">
+                    <button style="width: auto;" class="btn" >Plus</button>
+                   </td>
+                   </tr>
+                 </table> 
     </div>
 
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
