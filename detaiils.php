@@ -1,3 +1,13 @@
+<?php
+session_start();
+if ($_SESSION['loggedin']) {
+}
+else
+{
+ header('Location: details.php');
+  exit;
+} 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,7 +162,6 @@ span.psw {
     padding-top: 16px;
 }
 
-
 .modal {
     display: none;
     /* Hidden by default */
@@ -243,18 +252,20 @@ span.psw {
   <a href="#about">About</a>
   <a href="#contact">Contact</a>
   <div class="search-container">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
+      <input  type="text" placeholder="Search.." name="search">
+      <button type="submit" name="submit">Search</button>
+    </form>
   </div>
-  <p hidden>This paragraph should be hidden.</p>
 
 </div>
 
 <?php
 $idfErr="";
-require_once dirname(__FILE__) . '/dbConnect.php';
-    
-              $db = new DbConnect();
+require_once dirname(__FILE__) . '/dbConnect.php';   
+$db = new DbConnect();
               $con = $db->connect();
-             $stmt=$con->prepare("SELECT * FROM news where id_cat= ?");
+             $stmt=$con->prepare("SELECT * FROM news where id_cat=?");
              $stmt->bind_param("i", $_GET["id_cat"]);
              $stmt->execute();
              $stmt->bind_result($id_news, $text_news,$id_cat,$news_name,$news_image);
@@ -266,12 +277,18 @@ require_once dirname(__FILE__) . '/dbConnect.php';
                      $news["id_cat"] = $id_cat;
                     $news["news_name"] = $news_name;
                     $news["news_image"] = $news_image;
-                  echo ' <div style="padding-left:16px">
+                  echo ' <div  id="contenue"
+                   style="padding-left:16px">
                    <h2>'.$news_name.'</h2>
                    <p>'.$text_news.' </p>
                    </div>';
               }
           if(isset($_POST["submit"])) { 
+            echo '<style type="text/css">
+            #contenue {
+                 display: none;}
+             </style>';
+
         if (empty($_POST["search"])){
            $idfErr="chercher quoi???";
             }else{
@@ -301,29 +318,28 @@ require_once dirname(__FILE__) . '/dbConnect.php';
         $response=json_encode($news);
         $output = shell_exec( ' '. $_POST["search"]);
 }
-}
-?>
- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Contribuer</button>
+}?>
+  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Contribuer</button>
 
- <div id="id01" class="modal">
+  <div id="id01" class="modal">
 
-        <form class="modal-content animate" action="/action.php" method="post">
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                <input type="file" id="myFile" name="filename">
-                <button type="submit">Contribuer</button>
-                <label>
-          </label>
-            </div>
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
-        </form>
+<form class="modal-content animate" action="/action.php" method="post">
+    <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="file" id="myFile" name="filename">
+        <button type="submit">Contribuer</button>
+        <label>
+  </label>
     </div>
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</form>
+</div>
 </body>
 </html>
 

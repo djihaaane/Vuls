@@ -84,13 +84,7 @@ body {
 <div class="topnav">
   <a class="active" href="#home">Home</a>
   <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <div class="search-container">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit" name="submit">Search</button>
-    </form>
-  </div>
+  <a href="#contact">Contact</a>  </div>
   <p hidden>This paragraph should be hidden.</p>
 
 </div>
@@ -99,9 +93,10 @@ body {
 $idfErr="";
 require_once dirname(__FILE__) . '/dbConnect.php';
     
-$db = new DbConnect();
+              $db = new DbConnect();
               $con = $db->connect();
-             $stmt=$con->prepare("SELECT * FROM news");
+             $stmt=$con->prepare("SELECT * FROM news where id_cat= ?");
+             $stmt->bind_param("i", $_GET["id_cat"]);
              $stmt->execute();
              $stmt->bind_result($id_news, $text_news,$id_cat,$news_name,$news_image);
              $row = array();
@@ -112,18 +107,12 @@ $db = new DbConnect();
                      $news["id_cat"] = $id_cat;
                     $news["news_name"] = $news_name;
                     $news["news_image"] = $news_image;
-                  echo ' <div  id="contenue"
-                   style="padding-left:16px">
+                  echo ' <div style="padding-left:16px">
                    <h2>'.$news_name.'</h2>
                    <p>'.$text_news.' </p>
                    </div>';
               }
           if(isset($_POST["submit"])) { 
-            echo '<style type="text/css">
-            #contenue {
-                 display: none;}
-             </style>';
-
         if (empty($_POST["search"])){
            $idfErr="chercher quoi???";
             }else{
@@ -155,5 +144,6 @@ $db = new DbConnect();
 }
 }
 ?>
+
 </body>
 </html>
