@@ -73,18 +73,18 @@ else
 
     var btn1 = document.getElementById('p1');
     btn1.addEventListener('click', function() {
-      document.location.href = "/berbar/detaiils.php?id_cat=1";
+      document.location.href = "/elvul/detaiils.php?id_cat=1";
     });
     var btn2 = document.getElementById('p2');
     btn2.addEventListener('click', function() {
-      document.location.href = "/berbar/detaiils.php?id_cat=2";
+      document.location.href = "/elvul/detaiils.php?id_cat=2";
     });
     var btn3 = document.getElementById('p3');
     btn3.addEventListener('click', function() {
-      document.location.href = "/berbar/detaiils.php?id_cat=3";
+      document.location.href = "/elvul/detaiils.php?id_cat=3";
     });
     var btn4 = document.getElementById('p4');
     btn4.addEventListener('click', function() {
-      document.location.href = "/berbar/detaiils.php?id_cat=4";
+      document.location.href = "/elvul/detaiils.php?id_cat=4";
     });
 </script>

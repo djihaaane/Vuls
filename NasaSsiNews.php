@@ -10,7 +10,11 @@ echo $_SESSION['loggedin'];
               $idfErr="Champ(s) vide(s)!";
           }else{
                 echo $_POST["username"];
-                      $stmt = $con->prepare('SELECT user_username,user_password  FROM user WHERE user_username = ?');
+                $result1=$con->query("SELECT * FROM user WHERE user_username ='".$_POST["username"]);
+                while($row = mysqli_fetch_array($result1))
+                {
+                   print_r($row);
+                }                 $stmt = $con->prepare('SELECT user_username,user_password  FROM user WHERE user_username = ?');
                             $stmt->bind_param('s', $_POST['username']);
                              if ($stmt->execute()){
                   $stmt->bind_result($Username, $Password);
@@ -19,7 +23,6 @@ echo $_SESSION['loggedin'];
                   $user["user_username"] = $Username;
                   $user["user_password"] = $Password;
                   print_r($Username);
-
                   }
                   $encrypted = base64_encode(sha1($_POST["password"]));      
                 if ($Password == $encrypted) {
@@ -60,7 +63,7 @@ echo $_SESSION['loggedin'];
     <div class="topnav">
         <a class="active" href="#home">Home</a>
         <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+        <a href="#topnews">Top News</a>
         <a href="#about">About</a>
     </div>
     <div class="landing" id="home">
@@ -72,33 +75,41 @@ echo $_SESSION['loggedin'];
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading 80%</p>
         <p class="s"> HACKED SUCCESSFLY </p>
     </div> 
-    <p class="mm">Les nouveautés</p>
-    <div class="row" id="news">
+    <p class="mm" id="news">Les nouveautés</p>
+    <div class="row" >
             <table style="width:auto;">
                    <tr>
                    <td>
-                    <img width="350dp"  src="./images/covid.jpg">
+                    <img width="350dp"  src="./loadImage.php?pic=covid.jpg">
                     <button style="width: auto;" class="btn" id="p1" >Plus</button>
                    </td>
                    <td>
-                    <img width="350dp" src="./images/cybersecurite.jpg">
+                    <img width="350dp" src="./loadImage.php?pic=cybersecurite.jpg">
                     <button style="width: auto;" class="btn"   id="p2">Plus</button>
                    </td>
                    <td>
-                    <img width="350dp" src="./images/mgwp.jpg">
+                    <img width="350dp" src="./loadImage.php?pic=mgwp.jpg">
                     <button style="width: auto;" class="btn"  id="p3" >Plus</button>
                    </td>
                    </tr>
                    <tr>
                    <td>
-                    <img  width="350dp"  src="./images/sport.jpg">
+                    <img  width="350dp"  src="./loadImage.php?pic=sport.jpg">
                     <button style="width: auto;" class="btn"  id="p4">Plus</button>
                    </td>
                    </tr>
                  </table> 
     </div>
+    <div  id="news"> 
+     <p class="mm" id="topnews">Le Top des  nouveautés</p>
+     <h1>STEGAAAA</h1>
+     <p>scfjvsgrjnrfnirf;sjinrsjtoratewsgrthyjunhdrtgefgthyjgtre5tyhgfer4tgfretdgfrt </p>
+     <button style="width: auto;" class="btn"   id="rea">Realise Par ....</button>
+    </div>
 
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+  
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:100px;">Login</button>
 
     <div id="id01" class="modal">
 
@@ -134,20 +145,26 @@ echo $_SESSION['loggedin'];
 
   var btn = document.getElementById('p1');
     btn.addEventListener('click', function() {
-      document.location.href = "/berbar/details.php?id_cat=1";
+      document.location.href = "/elvul/details.php?id_cat=1";
     });
     var btn2 = document.getElementById('p2');
     btn2.addEventListener('click', function() {
-      document.location.href = "/berbar/details.php?id_cat=2";
+      document.location.href = "/elvul/details.php?id_cat=2";
     });
     var btn3 = document.getElementById('p3');
     btn3.addEventListener('click', function() {
-      document.location.href = "/berbar/details.php?id_cat=3";
+      document.location.href = "/elvul/details.php?id_cat=3";
     });
     var btn4 = document.getElementById('p4');
     btn4.addEventListener('click', function() {
-      document.location.href = "/berbar/details.php?id_cat=4";
+      document.location.href = "/elvul/details.php?id_cat=4";
     });
+
+    var realise = document.getElementById('rea');
+    realise.addEventListener('click', function() {
+      document.location.href = "/elvul/redact.php?id_news=1";
+    });
+
     // Get the modal
     var modal = document.getElementById('id01');
 

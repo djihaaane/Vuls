@@ -323,22 +323,22 @@ $db = new DbConnect();
 
   <div id="id01" class="modal">
 
-<form class="modal-content animate" action="/action.php" method="post">
-    <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <input type="file" id="myFile" name="filename">
-        <button type="submit">Contribuer</button>
-        <label>
-  </label>
-    </div>
-    <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-</form>
+  <form class="modal-content animate" action="/elvul/action.php" method="post" enctype="multipart/form-data">
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="file" id="myFile" name="filename">
+                <button type="submit" name="submit">Contribuer</button>
+                <label>
+          </label>
+            </div>
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
 </div>
 </body>
 </html>
