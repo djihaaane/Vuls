@@ -146,7 +146,7 @@ echo $_SESSION['loggedin'];
 
   var btn = document.getElementById('p1');
     btn.addEventListener('click', function() {
-      document.location.href = "/elvul/details.php?id_cat=1";
+      document.location.href = "/elvul/details.php?id_cat=4";
     });
     var btn2 = document.getElementById('p2');
     btn2.addEventListener('click', function() {
@@ -158,7 +158,7 @@ echo $_SESSION['loggedin'];
     });
     var btn4 = document.getElementById('p4');
     btn4.addEventListener('click', function() {
-      document.location.href = "/elvul/details.php?id_cat=4";
+      document.location.href = "/elvul/details.php?id_cat=1";
     });
 
     var realise = document.getElementById('rea');
