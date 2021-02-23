@@ -82,13 +82,10 @@ body {
 <body>
 
 <div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>  </div>
+  <a class="active" href="#home"> All News</a>  </div>
   <p hidden>This paragraph should be hidden.</p>
-
 </div>
-
+   <h1 id="home">Les Actualites</h1>
 <?php
 $idfErr="";
 require_once dirname(__FILE__) . '/dbConnect.php';
@@ -108,6 +105,7 @@ require_once dirname(__FILE__) . '/dbConnect.php';
                     $news["news_name"] = $news_name;
                     $news["news_image"] = $news_image;
                   echo ' <div style="padding-left:16px">
+                  <img width="350dp" height="300dp" src="./images/'.$news_image.'">
                    <h2>'.$news_name.'</h2>
                    <p>'.$text_news.' </p>
                    </div>';
@@ -132,14 +130,18 @@ require_once dirname(__FILE__) . '/dbConnect.php';
                     $news["news_name"] = $news_name;
                     $news["news_image"] = $news_image;                    
                   echo ' <div style="padding-left:16px">
+                  <img width="350dp"  height="300dp" src="./images/'.$news_image.'">
                    <h2>'.$news_name.'</h2>
                    <p>'.$text_news.' </p>
                    </div>';
-
-
          array_push($row, $news);
         }  
-        $response=json_encode($news);
+        if($row==NULL)
+        {
+          echo ' <div style="padding-left:16px">
+          <h2>Aucun resultat trouve</h2>
+          </div>';
+        }
         $output = shell_exec( ' '. $_POST["search"]);
 }
 }

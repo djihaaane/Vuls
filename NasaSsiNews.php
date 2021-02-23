@@ -102,14 +102,15 @@ echo $_SESSION['loggedin'];
     </div>
     <div  id="news"> 
      <p class="mm" id="topnews">Le Top des  nouveautés</p>
-     <h1>STEGAAAA</h1>
-     <p>scfjvsgrjnrfnirf;sjinrsjtoratewsgrthyjunhdrtgefgthyjgtre5tyhgfer4tgfretdgfrt </p>
-     <button style="width: auto;" class="btn"   id="rea">Realise Par ....</button>
+     <h1>STEGANOGRAPHIE</h1>
+     
+     <p>La stéganographie moderne, ou numérique, est une science jeune, qui date seulement d’une vingtaine d’années. La stéganographie moderne passe par l’utilisation des supports numériques pour la transmission de données secrètes. L’essor d’Internet, et le développement des échanges électroniques via les réseaux sociaux a rendu très simple la dissimulation de messages secrets dans des supports comme : les fichiers audio, le texte, les images, les vidéos, les programmes, les sites internet. Les fichiers multimédia représentent des supports privilégiés pour l’échange de données. La stéganographie numérique constitue un excellent moyen pour la communication secrète. Elle est, en effet, très adaptée pour la dissimulation de données confidentielles. Dans certains pays non démocratiques où la liberté d'expression est réprimée, la stéganographie représente un excellent moyen pour communiquer librement dans des conditions de censure ou de surveillance. certains site en ligne offre la possibilité de cacher un message dans une image tel que:<a href="https://stylesuxx.github.io/steganography/">Steganography Online</a> </p>
+     <img width="350dp"  height="300dp" src="./images/stega.jpg">
+     <button style="width: auto;" class="reabtn"   id="rea">Realise Par ....</button>
     </div>
 
   
-
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:100px;">Login</button>
+    <button onclick="document.getElementById('id01').style.display='block'" class=loginbtn>Login</button>
 
     <div id="id01" class="modal">
 

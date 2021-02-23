@@ -4,7 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {box-sizing: border-box;}
-
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -23,8 +22,9 @@ require_once dirname(__FILE__) . '/dbConnect.php';
                 while($row = mysqli_fetch_array($result1))
                 {
                     
-                   echo '     <img width="350dp"  src="./images/ano.jpg">
-                   <div style="padding-left:16px">
+                   echo '
+                   <div  style="padding-left:80px">
+                   <img width="350dp"  src="./images/ano.jpg">
                    <h2>'.$row[1].'</h2>
                    <p>'.$row[3].' </p>
                    </div>';

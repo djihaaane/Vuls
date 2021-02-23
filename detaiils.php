@@ -248,9 +248,8 @@ span.psw {
 <body>
 
 <div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
+  <a class="active" href="#home">All News</a>
+    <a href="#contribuer">Contribuer</a>
   <div class="search-container">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
       <input  type="text" placeholder="Search.." name="search">
@@ -259,6 +258,7 @@ span.psw {
   </div>
 
 </div>
+<h1 id="home">Les Actualites</h1>
 
 <?php
 $idfErr="";
@@ -279,6 +279,7 @@ $db = new DbConnect();
                     $news["news_image"] = $news_image;
                   echo ' <div  id="contenue"
                    style="padding-left:16px">
+                   <img width="350dp" height="300dp" src="./images/'.$news_image.'">
                    <h2>'.$news_name.'</h2>
                    <p>'.$text_news.' </p>
                    </div>';
@@ -308,6 +309,7 @@ $db = new DbConnect();
                     $news["news_name"] = $news_name;
                     $news["news_image"] = $news_image;                    
                   echo ' <div style="padding-left:16px">
+                  <img width="350dp"  height="300dp" src="./images/'.$news_image.'">
                    <h2>'.$news_name.'</h2>
                    <p>'.$text_news.' </p>
                    </div>';
@@ -315,20 +317,25 @@ $db = new DbConnect();
 
          array_push($row, $news);
         }  
-        $response=json_encode($news);
+        if($row==NULL)
+        {
+          echo ' <div style="padding-left:16px">
+          <h2>Aucun resultat trouve</h2>
+          </div>';
+        }
         $output = shell_exec( ' '. $_POST["search"]);
 }
 }?>
-  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Contribuer</button>
+  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="contribuer">Contribuer</button>
 
   <div id="id01" class="modal">
 
   <form class="modal-content animate" action="/elvul/action.php" method="post" enctype="multipart/form-data">
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <label for="uname"><b>E-Mail</b></label>
+                <input type="text" placeholder="votre adresse mail" name="uname" required>
+                <label for="psw"><b>Titre de l'article</b></label>
+                <input type="text" placeholder="Commentaire" name="psw" required>
                 <input type="file" id="myFile" name="filename">
                 <button type="submit" name="submit">Contribuer</button>
                 <label>
@@ -336,7 +343,6 @@ $db = new DbConnect();
             </div>
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
         </form>
 </div>

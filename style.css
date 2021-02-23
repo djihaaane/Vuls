@@ -30,6 +30,10 @@
     color: black;
 }
 
+p {
+    font-size: 30px;
+}
+
 .s {
     position: absolute;
     left: 25%;
@@ -109,6 +113,19 @@ button {
 
 button:hover {
     opacity: 0.8;
+}
+
+.reabtn {
+    background-color: white;
+    color: black;
+    position: absolute;
+    font-size: 20px;
+    right: 0;
+}
+
+.loginbtn {
+    width: 100px;
+    background-color: white;
 }
 
 
