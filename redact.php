@@ -6,6 +6,7 @@
 * {box-sizing: border-box;}
 body {
   margin: 0;
+  background-color:black;
   font-family: Arial, Helvetica, sans-serif;
 }
 </style>
@@ -23,7 +24,7 @@ require_once dirname(__FILE__) . '/dbConnect.php';
                 {
                     
                    echo '
-                   <div  style="padding-left:80px">
+                   <div  style="padding-left:40%;color:white;">
                    <img width="350dp"  src="./images/ano.jpg">
                    <h2>'.$row[1].'</h2>
                    <p>'.$row[3].' </p>

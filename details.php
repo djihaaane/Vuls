@@ -7,6 +7,7 @@
 
 body {
   margin: 0;
+  background-color: #057e55;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -104,7 +105,7 @@ require_once dirname(__FILE__) . '/dbConnect.php';
                      $news["id_cat"] = $id_cat;
                     $news["news_name"] = $news_name;
                     $news["news_image"] = $news_image;
-                  echo ' <div style="padding-left:16px">
+                  echo ' <div  style="padding-left:16px">
                   <img width="350dp" height="300dp" src="./images/'.$news_image.'">
                    <h2>'.$news_name.'</h2>
                    <p>'.$text_news.' </p>

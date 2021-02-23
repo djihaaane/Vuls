@@ -1,20 +1,14 @@
 <?php
 session_start();
 $_SESSION['loggedin'] = FALSE;
-echo $_SESSION['loggedin'];
+$idfErr="";
         require_once dirname(__FILE__) . '/dbConnect.php';
         $db = new DbConnect();
         $con = $db->connect();
         if(isset($_POST["submit"])) { 
           if (empty($_POST["username"]) or empty($_POST["password"])){
-              $idfErr="Champ(s) vide(s)!";
           }else{
-                echo $_POST["username"];
-                $result1=$con->query("SELECT * FROM user WHERE user_username ='".$_POST["username"]);
-                while($row = mysqli_fetch_array($result1))
-                {
-                   print_r($row);
-                }                 $stmt = $con->prepare('SELECT user_username,user_password  FROM user WHERE user_username = ?');
+                            $stmt = $con->prepare('SELECT user_username,user_password  FROM user WHERE user_username = ?');
                             $stmt->bind_param('s', $_POST['username']);
                              if ($stmt->execute()){
                   $stmt->bind_result($Username, $Password);
@@ -36,11 +30,12 @@ echo $_SESSION['loggedin'];
                           exit;
           
                       } else {
-                  $idfErr="Identifiants incorrects!"; 
+                  echo "Identifiants incorrects!"; 
               }
                                 $stmt->close();
           }else {
-               $idfErr="Identifiants incorrects"; 
+               echo "Identifiants incorrects";
+ 
           }
           }
           }
@@ -73,9 +68,9 @@ echo $_SESSION['loggedin'];
         <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading 40%
         <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading 60%
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading 80%</p>
-        <p class="s"> HACKED SUCCESSFLY </p>
+        <p class="s" > HACKED SUCCESSFULLY </p>
     </div> 
-    <p class="mm" id="news">Les nouveautés</p>
+    <p class="mm"  id="news">Les nouveautés</p>
     <div class="row" >
             <table style="width:auto;">
                    <tr>
@@ -102,11 +97,11 @@ echo $_SESSION['loggedin'];
     </div>
     <div  id="news"> 
      <p class="mm" id="topnews">Le Top des  nouveautés</p>
-     <h1>STEGANOGRAPHIE</h1>
+     <h1 style="color:white;">STEGANOGRAPHIE</h1>
      
-     <p>La stéganographie moderne, ou numérique, est une science jeune, qui date seulement d’une vingtaine d’années. La stéganographie moderne passe par l’utilisation des supports numériques pour la transmission de données secrètes. L’essor d’Internet, et le développement des échanges électroniques via les réseaux sociaux a rendu très simple la dissimulation de messages secrets dans des supports comme : les fichiers audio, le texte, les images, les vidéos, les programmes, les sites internet. Les fichiers multimédia représentent des supports privilégiés pour l’échange de données. La stéganographie numérique constitue un excellent moyen pour la communication secrète. Elle est, en effet, très adaptée pour la dissimulation de données confidentielles. Dans certains pays non démocratiques où la liberté d'expression est réprimée, la stéganographie représente un excellent moyen pour communiquer librement dans des conditions de censure ou de surveillance. certains site en ligne offre la possibilité de cacher un message dans une image tel que:<a href="https://stylesuxx.github.io/steganography/">Steganography Online</a> </p>
+     <p style="color:white;">La stéganographie moderne, ou numérique, est une science jeune, qui date seulement d’une vingtaine d’années. La stéganographie moderne passe par l’utilisation des supports numériques pour la transmission de données secrètes. L’essor d’Internet, et le développement des échanges électroniques via les réseaux sociaux a rendu très simple la dissimulation de messages secrets dans des supports comme : les fichiers audio, le texte, les images, les vidéos, les programmes, les sites internet. Les fichiers multimédia représentent des supports privilégiés pour l’échange de données. La stéganographie numérique constitue un excellent moyen pour la communication secrète. Elle est, en effet, très adaptée pour la dissimulation de données confidentielles. Dans certains pays non démocratiques où la liberté d'expression est réprimée, la stéganographie représente un excellent moyen pour communiquer librement dans des conditions de censure ou de surveillance. certains site en ligne offre la possibilité de cacher un message dans une image tel que:<a href="https://stylesuxx.github.io/steganography/">Steganography Online</a> </p>
      <img width="350dp"  height="300dp" src="./images/stega.jpg">
-     <button style="width: auto;" class="reabtn"   id="rea">Realise Par ....</button>
+     <button style="width: auto;" class="reabtn"   id="rea">Réalisé par ....</button>
     </div>
 
   
@@ -126,7 +121,6 @@ echo $_SESSION['loggedin'];
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
-
                 <button type="submit" name="submit">Login</button>
                 <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me

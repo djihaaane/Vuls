@@ -17,6 +17,7 @@ else
 
 body {
   margin: 0;
+  background-color: #057e55;
   font-family: Arial, Helvetica, sans-serif;
 }
 
