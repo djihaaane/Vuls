@@ -72,28 +72,28 @@ $idfErr="";
     </div> 
     <p class="mm"  id="news">Les nouveautés</p>
     <div class="row" >
-            <table style="width:auto;">
+    <table style="width:auto;">
                    <tr>
                    <td>
-                    <img width="350dp"  src="./loadImage.php?pic=covid.jpg">
+                    <img width="350dp"  src="./images/covid.jpg">
                     <button style="width: auto;" class="btn" id="p1" >Plus</button>
                    </td>
                    <td>
-                    <img width="350dp" src="./loadImage.php?pic=cybersecurite.jpg">
+                    <img width="350dp" src="./images/cybersecurite.jpg">
                     <button style="width: auto;" class="btn"   id="p2">Plus</button>
                    </td>
                    <td>
-                    <img width="350dp" src="./loadImage.php?pic=mgwp.jpg">
+                    <img width="350dp" src="./images/mgwp.jpg">
                     <button style="width: auto;" class="btn"  id="p3" >Plus</button>
                    </td>
                    </tr>
                    <tr>
                    <td>
-                    <img  width="350dp"  src="./loadImage.php?pic=sport.jpg">
+                    <img  width="350dp"  src="./images/sport.jpg">
                     <button style="width: auto;" class="btn"  id="p4">Plus</button>
                    </td>
                    </tr>
-                 </table> 
+                 </table>  
     </div>
     <div  id="news"> 
      <p class="mm" id="topnews">Le Top des  nouveautés</p>

@@ -1,0 +1,10 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 6C54-9450
+
+ Directory of C:\wamp64\www\berbar\contrib
+
+02/23/2021  09:14 PM    <DIR>          .
+02/23/2021  09:14 PM    <DIR>          ..
+02/23/2021  09:14 PM                 0 dir.txt
+               1 File(s)              0 bytes
+               2 Dir(s)   2,128,670,720 bytes free

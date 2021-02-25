@@ -77,7 +77,7 @@ p {
 /* Add a color to the active/current link */
 
 .topnav a.active {
-    background-color: ##057e55;
+    background-color: #057e55;
     color: white;
 }
 

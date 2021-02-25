@@ -42,24 +42,24 @@ else
     </div> 
     <p class="mm">Les nouveautés</p>
     <div class="row" id="news">
-            <table style="width:auto;">
+                 <table style="width:auto;">
                    <tr>
                    <td>
-                    <img width="350dp"  src="./images/covid.jpg">
+                    <img width="350dp"  src="./loadImage.php?pic=covid.jpg">
                     <button style="width: auto;" class="btn" id="p1" >Plus</button>
                    </td>
                    <td>
-                    <img width="350dp" src="./images/cybersecurite.jpg">
+                    <img width="350dp" src="./loadImage.php?pic=cybersecurite.jpg">
                     <button style="width: auto;" class="btn"   id="p2">Plus</button>
                    </td>
                    <td>
-                    <img width="350dp" src="./images/mgwp.jpg">
+                    <img width="350dp" src="./loadImage.php?pic=mgwp.jpg">
                     <button style="width: auto;" class="btn"  id="p3" >Plus</button>
                    </td>
                    </tr>
                    <tr>
                    <td>
-                    <img  width="350dp"  src="./images/sport.jpg">
+                    <img  width="350dp"  src="./loadImage.php?pic=sport.jpg">
                     <button style="width: auto;" class="btn"  id="p4">Plus</button>
                    </td>
                    </tr>
